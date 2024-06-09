@@ -1,4 +1,4 @@
-# software-tools-and-practice
+# software-tools-and-practice assignment
 
 1,GEBREMESKEL MOLLA ........WDU149181
 2,YOSEF TEFERA..........WDU147613
