@@ -1,37 +1,35 @@
-package Allproject;
+import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.Test;
-
-public class ArraySubsetCheckerTest {
+public class SubsetTest {
 
     @Test
-    public void testIsSubset_True() {
-        int[] arr1 = {1, 2, 3};
-        int[] arr2 = {1, 2, 3, 4, 5};
-        assertTrue(ArraySubsetChecker.isSubset(arr1, arr2));
+    public void testSubset() {
+        int[] array1 = {33, 51, 5, 31, 9, 4, 3};
+        int[] array2 = {51, 9, 33, 3};
+        assertTrue(isSubset(array1, array2));
     }
 
     @Test
-    public void testIsSubset_False() {
-        int[] arr1 = {1, 2, 6};
-        int[] arr2 = {1, 2, 3, 4, 5};
-        assertFalse(ArraySubsetChecker.isSubset(arr1, arr2));
+    public void testNotSubset() {
+        int[] array1 = {14, 11, 33, 2, 9, 1};
+        int[] array2 = {11, 2, 7, 1};
+        assertFalse(isSubset(array1, array2));
     }
 
-    @Test
-    public void testIsSubset_EmptyArray() {
-        int[] arr1 = {};
-        int[] arr2 = {1, 2, 3, 4, 5};
-        assertTrue(ArraySubsetChecker.isSubset(arr1, arr2));
-    }
+    public boolean isSubset(int[] array1, int[] array2) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : array1) {
+            set.add(i);
+        }
 
-    @Test
-    public void testIsSubset_SameArray() {
-        int[] arr1 = {1, 2, 3};
-        int[] arr2 = {1, 2, 3};
-        assertTrue(ArraySubsetChecker.isSubset(arr1, arr2));
+        for (int i : array2) {
+            if (!set.contains(i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
